@@ -202,6 +202,8 @@ h1 {
 	color: #ffffff;
 }
 
+.aboutme:hover {color: #f3a6c7;}
+
 .pf {
 	color: white;
 }
@@ -245,6 +247,7 @@ h6 {
 .inner {
 	width: 1000px;
 	margin: auto;
+	font-family: 'pretendard';
 }
 
 /* 1 */
@@ -543,34 +546,173 @@ h6 {
 	background: linear-gradient(to bottom, #e4e4e4 0%, #ffffff 70%);
 }
 
-#section5 .inner h1:nth-of-type(2) {
-	padding-top: 2em;
+.education_skill_inner {
+	width: 1180px;
+	margin: auto;
 }
 
-.resume {
+.rs_grid {
+	display: grid;
+	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
+	gap: 84px;
+	align-items: start;
+}
+
+.section_label {
+	font-size: 12px;
+	line-height: 1;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	color: #259d82;
+	margin-bottom: 14px;
+	font-family: "Mulmaru";
+}
+
+.rs_title {
+	padding-bottom: 0.95em;
+}
+
+/* education */
+.education_list_v2 {
+	margin-top: -10px;
+}
+
+.education_item {
+	position: relative;
+	display: grid;
+	grid-template-columns: 74px 1fr;
+	column-gap: 30px;
+	padding: 30px 0;
+	border-bottom: 1px solid #d7e4dd;
+}
+
+.education_item:last-child {
+	border-bottom: 0;
+}
+
+.education_year {
+	font-size: 13px;
+	line-height: 1.4;
+	color: #259d82;
+	font-family: "Mulmaru";
+	padding-top: 2px;
+}
+
+.education_body {
+	position: relative;
+	padding-left: 26px;
+}
+
+.education_body::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	width: 1px;
+	background: #d7e4dd;
+}
+
+.education_item:first-child .education_body::before {
+	top: 15px;
+	bottom: -30px;
+}
+
+.education_item:not(:first-child):not(:last-child) .education_body::before {
+	top: -30px;
+	bottom: -30px;
+}
+
+.education_item:last-child .education_body::before {
+	top: -30px;
+	bottom: calc(100% - 15px);
+}
+
+.education_dot {
+	position: absolute;
+	left: 0;
+	top: 15px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #f4f4f4;
+	border: 2px solid #259d82;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+}
+
+.education_body h4 {
+	font-size: 18px;
+	line-height: 1.72;
+	font-weight: 700;
+	color: #2c2c2c;
+	padding-bottom: 0;
+	word-break: keep-all;
+	font-family: "Pretendard", sans-serif;
+}
+
+/* skill */
+.skill_wrap_v2 {
+	margin-top: 23px;
+}
+
+.skill_group {
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+	flex-direction: column;
+	gap: 20px;
 }
 
-.resume li {
-	width: 31%;
-	background-color: #fff;
-	padding: 3em;
-	box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
-	border-radius: 20px;
-	box-sizing: border-box;
+.skill_row {
+	display: grid;
+	grid-template-columns: 118px minmax(0, 1fr) 36px;
+	align-items: center;
+	column-gap: 16px;
 }
 
-.skills {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-content: space-between;
-	background-color: #fff;
-	padding: 3em;
-	box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
-	border-radius: 20px;
+.skill_name {
+	min-width: 0;
+	font-size: 15px;
+	line-height: 1.4;
+	font-weight: 500;
+	color: #2c2c2c;
+	font-family: "Pretendard", sans-serif;
+}
+
+.skill_bar_track {
+	width: 100%;
+	height: 4px;
+	background: #d8e5df;
+	border-radius: 999px;
+	overflow: visible;
+	position: relative;
+}
+
+.skill_bar_fill {
+	width: 0;
+	height: 100%;
+	border-radius: 999px;
+	background: linear-gradient(90deg, #259d82 0%, #f3a6c7 100%);
+	position: relative;
+	transition: width 1.2s ease;
+}
+
+.skill_bar_fill::after {
+	content: "";
+	position: absolute;
+	right: -4px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #f3a6c7;
+}
+
+.skill_pct {
+	min-width: 36px;
+	text-align: right;
+	font-size: 13px;
+	line-height: 1;
+	color: #259d82;
+	font-family: "Mulmaru";
 }
 
 /* 6 */
@@ -785,9 +927,8 @@ h6 {
 .fp-viewing-anchor2-0 .portfolio,
 .fp-viewing-anchor2-1 .portfolio,
 .fp-viewing-anchor3 .art,
-.fp-viewing-anchor5 .resume,
-.fp-viewing-anchor5 .skill_wrap,
-.fp-viewing-anchor5 .skill_list {
+.fp-viewing-anchor5 .education_col,
+.fp-viewing-anchor5 .skill_col {
 	animation: bottom 1s 0.3s both;
 }
 
@@ -1277,130 +1418,118 @@ h6 {
 	}
 }
 
-/* section_skill */
-#section_skill {
-	background-color: #e4e4e4;
-}
-
-.skill_wrap {
-	width: 1120px;
-	margin: auto;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	height: 100%;
-}
-
-.skill_title {
-	margin-bottom: 55px;
-}
-
-.skill_title h4 {
-	font-size: 20px;
-	line-height: 30px;
-	color: #425BB5;
-	font-family: "Cormorant", serif;
-	font-weight: 700;
-	padding-bottom: 18px;
-	position: relative;
-	padding-left: 38px;
-}
-
-.skill_title h4::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 14px;
-	width: 28px;
-	height: 2px;
-	background-color: #14804e;
-}
-
-.skill_title h1 {
-	font-size: 58px;
-	line-height: 0.95;
-	padding-bottom: 0;
-	text-shadow: none;
-}
-
-.skill_list {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.skill_list li {
-	width: 160px;
-	text-align: center;
-}
-
-.chart {
-	width: 160px;
-	height: 160px;
-	margin: 0 auto;
-}
-
-.chart_circle {
-	width: 160px;
-	height: 160px;
-	border-radius: 50%;
-	position: relative;
-	background: conic-gradient(#14804e 0deg, transparent 0deg);
-	transition: background 0.1s linear;
-}
-
-.chart_circle::before {
-	content: "";
-	position: absolute;
-	inset: 7px;
-	background: #ffffff;
-	border-radius: 50%;
-	z-index: 1;
-}
-
-.chart .title {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	width: 100%;
-	text-align: center;
-	font-family: Arial, sans-serif;
-	font-size: 13px;
-	line-height: 1.5;
-	color: #444;
-	z-index: 2;
-}
-
-.chart .title b {
-	display: block;
-	font-size: 18px;
-	line-height: 1;
-	margin-bottom: 8px;
-	color: #333;
-}
-
-@media (max-width: 1200px) {
-	.skill_wrap {
+/* responsive */
+@media (max-width: 1100px) {
+	.education_skill_inner {
 		width: 90%;
 	}
 
-	.skill_list {
-		flex-wrap: wrap;
-		gap: 30px 20px;
-		justify-content: center;
+	.rs_grid {
+		grid-template-columns: 1fr;
+		gap: 48px;
 	}
 }
 
 @media (max-width: 768px) {
-	.skill_title h1 {
-		font-size: 46px;
+	.education_item {
+		grid-template-columns: 72px 1fr;
+		column-gap: 24px;
+		padding: 24px 0;
 	}
 
-	.chart,
-	.chart_circle {
-		width: 140px;
-		height: 140px;
+	.education_item:first-child .education_body::before {
+		top: 14px;
+		bottom: -24px;
+	}
+
+	.education_item:not(:first-child):not(:last-child) .education_body::before {
+		top: -24px;
+		bottom: -24px;
+	}
+
+	.education_item:last-child .education_body::before {
+		top: -24px;
+		bottom: calc(100% - 14px);
+	}
+
+	.education_body {
+		padding-left: 20px;
+	}
+
+	.education_dot {
+		top: 14px;
+	}
+
+	.education_body h4 {
+		font-size: 16px;
+		line-height: 1.6;
+	}
+
+	.skill_row {
+		grid-template-columns: 108px minmax(0, 1fr) 36px;
+		column-gap: 12px;
+	}
+
+	.skill_name {
+		font-size: 14px;
+	}
+}
+
+
+@media (max-width: 599px) {
+	.education_skill_inner {
+		width: 90%;
+	}
+
+	.rs_grid {
+		gap: 40px;
+	}
+
+	.education_item {
+		grid-template-columns: 1fr;
+		row-gap: 10px;
+		padding: 22px 0;
+	}
+
+	.education_year {
+		padding-left: 36px;
+	}
+
+	.education_body {
+		padding-left: 36px;
+	}
+
+	.education_item:first-child .education_body::before {
+		left: 12px;
+		top: 14px;
+		bottom: -22px;
+	}
+
+	.education_item:not(:first-child):not(:last-child) .education_body::before {
+		left: 12px;
+		top: -22px;
+		bottom: -22px;
+	}
+
+	.education_item:last-child .education_body::before {
+		left: 12px;
+		top: -22px;
+		bottom: calc(100% - 14px);
+	}
+
+	.education_dot {
+		left: 12px;
+		top: 14px;
+	}
+
+	.skill_row {
+		grid-template-columns: 1fr;
+		row-gap: 10px;
+	}
+
+	.skill_name,
+	.skill_pct {
+		text-align: left;
 	}
 }
 
@@ -1454,10 +1583,6 @@ h6 {
 	pointer-events: none;
 	z-index: 1;
 }
-
-/* =========================
-   모든 섹션 공통 위치
-========================= */
 
 /* 큰 회전 요소 : 오른쪽 위 */
 #section2::before,
