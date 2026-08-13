@@ -282,20 +282,22 @@ h6 {
 }
 
 .portfolio {
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	align-items: stretch;
-	gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 두 번째 줄 2개 항목을 가운데 정렬 */
+    align-items: stretch;
+    gap: 20px;
 }
 
 .portfolio li {
-	width: 100%;
-	text-align: center;
-	background-color: #f8f8f8;
-	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-	border-radius: 20px;
-	overflow: hidden;
-	transition: 0.7s;
+    /* 기존 Grid의 repeat(3, 1fr) 느낌을 유지하도록 너비 계산 (gap 20px 2개 = 40px) */
+    width: calc((100% - 40px) / 3);
+    text-align: center;
+    background-color: #f8f8f8;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.7s;
 }
 
 .portfolio li a {
